@@ -72,8 +72,25 @@ body{
 .poster{
   width: 100%;
   height: 100%;
+  background-color: white;
 }
 .poster .tweet{
   color: black;
   font-size: 150px;
+  font-family: 'Knockout-31JuniorMiddlewt';
+}
+.poster .noun{
+  font-family: 'Knockout-73FullHeviweight';
+}
+.poster .verb{
+  font-family: 'Knockout-54Sumo';
+}
+.poster .adverb{
+  font-family: 'Knockout-26JuniorFlywght';
+}
+.poster .adjective{
+  font-family: 'Knockout-26JuniorFlywght';
+}
+.poster .conjunction{
+  font-family: 'Knockout-26JuniorFlywght';
 }

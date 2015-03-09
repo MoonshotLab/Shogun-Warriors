@@ -2,6 +2,7 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var config = require('./config')();
+var textParser = require('./lib/text-parser');
 var port = process.env.PORT || 3000;
 var app = express();
 
@@ -34,13 +35,11 @@ app.get('/listener', function(req ,res){
 
 var io = require('socket.io')(server);
 
-var validate = function(){
-  return true;
-};
-
 io.on('connection', function(socket){
   socket.on('tweet-created', function(tweet){
-    if(validate(tweet))
+    textParser.definePOS(tweet.text, function(parsedText){
+      tweet.parsed = parsedText;
       io.sockets.emit('new-tweet', tweet);
+    });
   });
 });

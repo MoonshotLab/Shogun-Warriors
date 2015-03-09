@@ -4,7 +4,7 @@ $(function(){
     $('.poster').css({
       'background' : backgrounds.getOne()
     });
-    $('.tweet').html(tweet.text);
+    $('.tweet').html(tweet.parsed);
   });
 
 });
