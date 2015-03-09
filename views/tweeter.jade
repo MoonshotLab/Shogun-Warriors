@@ -4,4 +4,7 @@ block head
   script(src='/tweeter.js')
 
 block content
-  h1 Tweeter
+  .container
+    textarea#tweet(type='text')
+    .characters-left 140
+    a#submit-tweet(href='#') Submit

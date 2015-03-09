@@ -1,4 +1,39 @@
 body{
   background-color: black;
   color: white;
+  font-family: Helvetica;
+}
+
+.container{
+  max-width: 600px;
+  margin: auto;
+}
+
+textarea{
+  font-family: Helvetica;
+  font-size: 25px;
+  padding: 3% 3% 7%;
+  width: 94%;
+  border: none;
+  margin-bottom: 3%;
+  line-height: 130%;
+}
+
+a{
+  display: block;
+  color: black;
+  font-size: 25px;
+  padding: 2% 2% 1%;
+  background-color: white;
+  display: inline-block;
+  float: right;
+  text-decoration: none;
+}
+
+.characters-left{
+  color: white;
+  float: left;
+  font-size: 40px;
+  opacity: .5;
+  padding-top: 1%;
 }

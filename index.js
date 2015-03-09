@@ -34,6 +34,10 @@ app.get('/listener', function(req ,res){
 
 var io = require('socket.io')(server);
 
+var validate = function(){
+  return true;
+};
+
 io.on('connection', function(socket){
   socket.on('tweet-created', function(tweet){
     if(validate(tweet))
