@@ -1,10 +1,10 @@
 $(function(){
 
   socket.on('new-tweet', function(tweet){
-    console.log(tweet);
-    $('.gradient-background').css({
+    $('.poster').css({
       'background' : backgrounds.getOne()
     });
+    $('.tweet').html(tweet.text);
   });
 
 });
