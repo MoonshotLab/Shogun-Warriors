@@ -79,6 +79,16 @@ body{
   font-size: 150px;
   font-family: 'Knockout-31JuniorMiddlewt';
 }
+.poster .tweet.animate{
+  transition: .5s linear opacity;
+  opacity: 1;
+}
+.poster .tweet.hide{
+  opacity: 0;
+}
+.poster .tweet span.hide{
+  opacity: 0;
+}
 .poster .noun{
   font-family: 'Knockout-73FullHeviweight';
 }
