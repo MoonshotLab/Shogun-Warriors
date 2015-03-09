@@ -1,3 +1,27 @@
+@font-face {
+  font-family: 'Knockout-26JuniorFlywght';
+  src: url('/fonts/Knockout-26JuniorFlywght.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Knockout-31JuniorMiddlewt';
+  src: url('/fonts/Knockout-31JuniorMiddlewt.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Knockout-51Middleweight';
+  src: url('/fonts/Knockout-51Middleweight.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Knockout-54Sumo';
+  src: url('/fonts/Knockout-54Sumo.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Knockout-73FullHeviweight';
+  src: url('/fonts/Knockout-73FullHeviweight.otf') format('opentype');
+}
+
+
+
+
 html, body{
   margin: 0;
   height: 100%;
