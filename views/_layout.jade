@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, user-scalable=no')
+
+    link(rel='stylesheet', href='/app.css')
+
+    script(src='/socket.io/socket.io.js')
+    script(src='http://underscorejs.org/underscore-min.js')
+    script(src='//code.jquery.com/jquery-1.11.2.min.js')
+
+    script.
+      var socket = io();
+
+    block head
+
+    body
+      block content
