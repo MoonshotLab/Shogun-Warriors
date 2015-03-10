@@ -1,9 +1,8 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var profanity = require('profanity-util');
 var config = require('./config')();
-var textParser = require('./lib/text-parser');
+var validator = require('./lib/validator');
 var port = process.env.PORT || 3000;
 var app = express();
 
@@ -34,14 +33,21 @@ app.get('/listener', function(req ,res){
 
 
 
+var preparse = function(tweet, next){
+  validator.definePOS(tweet.text)
+    .then(validator.clean)
+    .then(function(purified){
+      tweet.pure = purified;
+      next(tweet);
+    }
+  );
+};
+
 var io = require('socket.io')(server);
 
 io.on('connection', function(socket){
   socket.on('tweet-created', function(tweet){
-    textParser.definePOS(tweet.text, function(spanified){
-      var purified = profanity.purify(spanified);
-      tweet.pure = purified[0];
-      tweet.spanified = spanified;
+    preparse(tweet, function(tweet){
       io.sockets.emit('new-tweet', tweet);
     });
   });
