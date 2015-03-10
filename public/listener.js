@@ -8,15 +8,16 @@ var animationClass = 'flipInX';
 
 
 $(function(){
-  toggleBackground();
+  backgrounds.toggle();
   $tweet = $('.tweet');
 
   socket.on('new-tweet', function(tweet){
     $tweet.addClass('animate');
 
     setTimeout(function(){ $tweet.addClass('hide');}, 1);
-    setTimeout(toggleBackground,                      600);
+    setTimeout(backgrounds.toggle(),                  600);
     setTimeout(function(){ updateText(tweet); },      1000);
+    setTimeout(shapes.toggle(),                       3500);
   });
 });
 
@@ -42,6 +43,15 @@ var updateText = function(tweet){
   $tweet.removeClass('hide');
   $tweet.html(text);
 
+  // adjust text size dependent on tweet length
+  var tweetLength = $tweet.text().length;
+  if(tweetLength > 60)
+    $tweet.css({ 'font-size' : '100px' });
+  else if(tweetLength > 90)
+    $tweet.css({ 'font-size' : '80px' });
+  else
+    $tweet.css({ 'font-size' : '150px' });
+
   // loop over each element
   var spans = shuffleArray($tweet.find('span'));
   spans.each(function(i){
@@ -64,17 +74,7 @@ var scheduleReveal = function($el, i){
 
 
 var toggleBackground = function(){
-  var $a = $('.background-a');
-  var $b = $('.background-b');
-  if($a.hasClass('hide')){
-    $a.css({ 'background' : backgrounds.getOne() });
-    $b.addClass('hide');
-    $a.removeClass('hide');
-  } else {
-    $b.css({ 'background' : backgrounds.getOne() });
-    $a.addClass('hide');
-    $b.removeClass('hide');
-  }
+
 };
 
 

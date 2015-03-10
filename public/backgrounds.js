@@ -1,5 +1,6 @@
 var backgrounds = {};
 
+
 backgrounds.list = [
   ['#c41800'],
   ['#002ac4'],
@@ -14,6 +15,7 @@ backgrounds.list = [
   ['#c47800', '#00c4ab'],
   ['#00c4ab', '#c47800']
 ];
+
 
 backgrounds.getOne = function(){
   var rando = Math.floor(Math.random()*backgrounds.list.length);
@@ -32,4 +34,19 @@ backgrounds.getOne = function(){
   } else backgroundString = colors[0];
 
   return backgroundString;
+};
+
+
+backgrounds.toggle = function(){
+  var $a = $('.background-a');
+  var $b = $('.background-b');
+  if($a.hasClass('hide')){
+    $a.css({ 'background' : backgrounds.getOne() });
+    $b.addClass('hide');
+    $a.removeClass('hide');
+  } else {
+    $b.css({ 'background' : backgrounds.getOne() });
+    $a.addClass('hide');
+    $b.removeClass('hide');
+  }
 };

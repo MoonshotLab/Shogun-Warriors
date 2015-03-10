@@ -56,7 +56,7 @@ io.on('connection', function(socket){
 var timer = null;
 twitter.stream.on('tweet', function(tweet){
   if(!timer){
-    timer = setTimeout(function(){ timer = null; }, 5000);
+    timer = setTimeout(function(){ timer = null; }, 7000);
     preparse(tweet, function(tweet){
       io.sockets.emit('new-tweet', tweet);
     });

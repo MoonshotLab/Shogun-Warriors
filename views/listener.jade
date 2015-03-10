@@ -3,10 +3,12 @@ extends _layout
 block head
   script(src='/backgrounds.js')
   script(src='/listener.js')
+  script(src='/shapes.js')
   link(rel='stylesheet' href='/vendor/animate.css')
 
 block content
   .poster
+    .shape.animated
     .background.background-a
     .background.background-b.hide
     .tweet
