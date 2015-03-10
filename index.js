@@ -1,7 +1,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var config = require('./config')();
+var twitter = require('./lib/twitter');
 var validator = require('./lib/validator');
 var port = process.env.PORT || 3000;
 var app = express();
@@ -51,4 +51,14 @@ io.on('connection', function(socket){
       io.sockets.emit('new-tweet', tweet);
     });
   });
+});
+
+var timer = null;
+twitter.stream.on('tweet', function(tweet){
+  if(!timer){
+    timer = setTimeout(function(){ timer = null; }, 5000);
+    preparse(tweet, function(tweet){
+      io.sockets.emit('new-tweet', tweet);
+    });
+  }
 });
