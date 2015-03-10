@@ -26,7 +26,7 @@ var updateText = function(tweet){
 
   // ensure every word is surrounded in a span
   var text   = '';
-  var splits = tweet.parsed.split(' ');
+  var splits = tweet.pure.split(' ');
   splits.forEach(function(split){
     var subStr = '';
     if(split.indexOf('span') == -1 && split.indexOf('class=') == -1){

@@ -1,6 +1,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var profanity = require('profanity-util');
 var config = require('./config')();
 var textParser = require('./lib/text-parser');
 var port = process.env.PORT || 3000;
@@ -37,8 +38,10 @@ var io = require('socket.io')(server);
 
 io.on('connection', function(socket){
   socket.on('tweet-created', function(tweet){
-    textParser.definePOS(tweet.text, function(parsedText){
-      tweet.parsed = parsedText;
+    textParser.definePOS(tweet.text, function(spanified){
+      var purified = profanity.purify(spanified);
+      tweet.pure = purified[0];
+      tweet.spanified = spanified;
       io.sockets.emit('new-tweet', tweet);
     });
   });
