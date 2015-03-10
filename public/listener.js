@@ -13,11 +13,12 @@ $(function(){
 
   socket.on('new-tweet', function(tweet){
     $tweet.addClass('animate');
+    shapes.hide();
 
     setTimeout(function(){ $tweet.addClass('hide');}, 1);
-    setTimeout(backgrounds.toggle(),                  600);
+    setTimeout(backgrounds.toggle,                    600);
     setTimeout(function(){ updateText(tweet); },      1000);
-    setTimeout(shapes.toggle(),                       3500);
+    setTimeout(shapes.show,                           1800);
   });
 });
 
@@ -69,12 +70,6 @@ var scheduleReveal = function($el, i){
     $el.removeClass('hide');
     $el.addClass(animationClass);
   }, (i+1)*50);
-};
-
-
-
-var toggleBackground = function(){
-
 };
 
 

@@ -15,13 +15,16 @@ shapes.getOne = function(){
 };
 
 
-shapes.toggle = function(){
+
+shapes.hide = function(){
   var $shape = $('.shape');
   $shape.addClass('bounceOut');
+};
 
-  setTimeout(function(){
-    $shape.text(shapes.getOne());
-    $shape.removeClass('bounceOut');
-    $shape.addClass('bounceIn');
-  }, 1000);
+
+shapes.show = function(){
+  var $shape = $('.shape');
+  $shape.text(shapes.getOne());
+  $shape.removeClass('bounceOut');
+  $shape.addClass('bounceIn');
 };
