@@ -11,8 +11,22 @@ $(function(){
     setTimeout(toggleBackground, 700);
 
     setTimeout(function(){
+      var text   = '';
+      var splits = tweet.parsed.split(' ');
+
+      splits.forEach(function(split){
+        var sub = '';
+        if(split.indexOf('span') == -1){
+          sub += '<span class="other">';
+          sub += split;
+          sub += '</span> ';
+        } else sub = (split + ' ');
+
+        text += sub;
+      });
+
       $tweet.removeClass('hide');
-      $tweet.html(tweet.parsed);
+      $tweet.html(text);
       $tweet.find('span').each(function(i){
         scheduleReveal($(this), i);
       });
