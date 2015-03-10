@@ -1,10 +1,15 @@
 $(function(){
 
+  $('#tweet').keypress(function(e){
+    if(e.keyCode == 13){
+      e.preventDefault();
+      submitTweet();
+    }
+  });
+
   $('#tweet').keyup(function(e){
     var charsLeft = 140 - $('#tweet').val().length;
     $('.characters-left').text(charsLeft);
-
-    if(e.keyCode == 13) submitTweet();
   });
 
   $('#submit-tweet').click(submitTweet);

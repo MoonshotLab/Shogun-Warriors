@@ -15,8 +15,8 @@ $(function(){
     $tweet.addClass('animate');
 
     setTimeout(function(){ $tweet.addClass('hide');}, 1);
-    setTimeout(toggleBackground,                      700);
-    setTimeout(function(){ updateText(tweet); },      1500);
+    setTimeout(toggleBackground,                      600);
+    setTimeout(function(){ updateText(tweet); },      1000);
   });
 });
 
@@ -29,7 +29,7 @@ var updateText = function(tweet){
   var splits = tweet.parsed.split(' ');
   splits.forEach(function(split){
     var subStr = '';
-    if(split.indexOf('span') == -1){
+    if(split.indexOf('span') == -1 && split.indexOf('class=') == -1){
       subStr += '<span class="other">';
       subStr += split;
       subStr += '</span> ';
