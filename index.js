@@ -1,6 +1,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var fs = require('fs');
 var twitter = require('./lib/twitter');
 var validator = require('./lib/validator');
 var port = process.env.PORT || 3000;
@@ -26,9 +27,16 @@ app.get('/tweeter', function(req ,res){
   res.render('tweeter');
 });
 
+// collect all available shape files and pass to client
+var shapes = [];
+fs.readdir('public/img/', function(err, files){
+  var dsStore = files.indexOf('.DS_Store');
+  files.splice(dsStore, 1);
+  shapes = files;
+});
 // watch posters get created
 app.get('/listener', function(req ,res){
-  res.render('listener');
+  res.render('listener', { shapes : shapes });
 });
 
 

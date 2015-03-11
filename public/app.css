@@ -1,26 +1,22 @@
 @font-face {
-  font-family: 'VeneerExtras';
-  src: url('/fonts/VeneerExtras.otf') format('opentype');
+  font-family: 'Knockout-27JuniorBantamwt';
+  src: url('/fonts/Knockout-27JuniorBantamwt.otf') format('opentype');
 }
 @font-face {
-  font-family: 'Knockout-26JuniorFlywght';
-  src: url('/fonts/Knockout-26JuniorFlywght.otf') format('opentype');
+  font-family: 'Knockout-47Bantamweight';
+  src: url('/fonts/Knockout-47Bantamweight.otf') format('opentype');
 }
 @font-face {
-  font-family: 'Knockout-31JuniorMiddlewt';
-  src: url('/fonts/Knockout-31JuniorMiddlewt.otf') format('opentype');
+  font-family: 'Knockout-68FullFeatherwt';
+  src: url('/fonts/Knockout-68FullFeatherwt.otf') format('opentype');
 }
 @font-face {
-  font-family: 'Knockout-51Middleweight';
-  src: url('/fonts/Knockout-51Middleweight.otf') format('opentype');
+  font-family: 'Knockout-72FullCruiserwt';
+  src: url('/fonts/Knockout-72FullCruiserwt.otf') format('opentype');
 }
 @font-face {
-  font-family: 'Knockout-54Sumo';
-  src: url('/fonts/Knockout-54Sumo.otf') format('opentype');
-}
-@font-face {
-  font-family: 'Knockout-73FullHeviweight';
-  src: url('/fonts/Knockout-73FullHeviweight.otf') format('opentype');
+  font-family: 'Knockout-93UltmtHeviwt';
+  src: url('/fonts/Knockout-93UltmtHeviwt.otf') format('opentype');
 }
 
 
@@ -32,7 +28,7 @@ html, body{
 }
 body{
   color: white;
-  background: linear-gradient(rgb(0, 196, 18), rgb(0, 196, 171), rgb(196, 0, 180));
+  background: linear-gradient(#EA1D8E, #F7931D, #E52125);
   font-family: Helvetica;
   width: 100%;
   height: 100%;
@@ -47,7 +43,7 @@ body{
   padding-top: 50px;
 }
 .tweet-container textarea{
-  font-family: Helvetica;
+  font-family: 'Knockout-93UltmtHeviwt';
   font-size: 25px;
   padding: 3% 3% 7%;
   width: 94%;
@@ -56,17 +52,19 @@ body{
   line-height: 130%;
 }
 .tweet-container a{
+  font-family: 'Knockout-93UltmtHeviwt';
   display: block;
   color: white;
   font-size: 25px;
   padding: 2% 2% 1%;
-  background-color: rgb(196, 0, 180);
+  background-color: #E52125;
   display: inline-block;
   border: 2px solid white;
   float: right;
   text-decoration: none;
 }
 .tweet-container .characters-left{
+  font-family: 'Knockout-93UltmtHeviwt';
   color: white;
   float: left;
   font-size: 40px;
@@ -94,12 +92,14 @@ body{
 }
 .poster .shape{
   position: absolute;
-  color: black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right center;
   z-index: 2;
-  right: -1%;
-  bottom: -20%;
-  font-size: 500px;
-  font-family: 'VeneerExtras';
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  height: 50%;
 }
 .poster .tweet{
   position: relative;
@@ -108,7 +108,7 @@ body{
   font-size: 130px;
   width: 90%;
   margin: 2% auto 0;
-  font-family: 'Knockout-31JuniorMiddlewt';
+  font-family: 'Knockout-27JuniorBantamwt';
 }
 .poster .tweet.animate{
   transition: .5s linear opacity;
