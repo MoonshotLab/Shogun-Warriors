@@ -1,4 +1,5 @@
 var $tweet;
+var $poster;
 var animationClass = 'flipInX';
 // var animationClass = 'flipInY';
 // var animationClass = 'bounceIn';
@@ -10,6 +11,7 @@ var animationClass = 'flipInX';
 $(function(){
   backgrounds.toggle();
   $tweet = $('.tweet');
+  $poster = $('.poster');
 
   socket.on('new-tweet', function(tweet){
     $tweet.addClass('animate');
@@ -44,14 +46,40 @@ var updateText = function(tweet){
   $tweet.removeClass('hide');
   $tweet.html(text);
 
-  // adjust text size dependent on tweet length
+  // adjust text size, alignment, and breaks dependent on tweet length
   var tweetLength = $tweet.text().length;
-  if(tweetLength > 60)
-    $tweet.css({ 'font-size' : '100px' });
-  else if(tweetLength > 90)
-    $tweet.css({ 'font-size' : '80px' });
-  else
-    $tweet.css({ 'font-size' : '150px' });
+  var wordCount = $tweet.children().length;
+
+  $poster.removeClass('text-short text-mid text-long');
+  if(tweetLength < 15)
+    $poster.addClass('text-short');
+  if(tweetLength > 105)
+    $poster.addClass('text-long');
+
+  $poster.removeClass('word-count-1 word-count-2 word-count-3 word-count-4');
+  if(wordCount == 1)
+    $poster.addClass('word-count-1');
+  if(wordCount == 2)
+    $poster.addClass('word-count-2');
+  if(wordCount == 3)
+    $poster.addClass('word-count-3');
+  if(wordCount == 4)
+    $poster.addClass('word-count-4');
+
+  $poster.removeClass('align-center align-justify align-right align-left');
+  if(tweetLength < 35){
+    $tweet.css({ 'font-size' : '350px' });
+    $poster.addClass('align-center');
+  } else if(tweetLength < 70) {
+    $tweet.css({ 'font-size' : '300px' });
+    $poster.addClass('align-right');
+  } else if(tweetLength < 105) {
+    $tweet.css({ 'font-size' : '250px' });
+    $poster.addClass('align-justify');
+  } else {
+    $tweet.css({ 'font-size' : '200px' });
+    $poster.addClass('align-justify');
+  }
 
   // loop over each element
   var spans = shuffleArray($tweet.find('span'));
