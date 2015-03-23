@@ -102,8 +102,8 @@ body{
   position: relative;
   z-index: 3;
   color: black;
-  width: 85%;
-  margin: 4% auto 0;
+  width: 79%;
+  margin: 2% auto 0;
   font-family: 'Knockout-47Bantamweight';
   text-transform: uppercase;
   line-height: 100%;
@@ -177,7 +177,7 @@ body{
   background-position: right center;
   height: 50%;
   width: 100%;
-  -webkit-filter: invert(100%) opacity(25%);
+  -webkit-filter: invert(100%);
 }
 .poster.align-left{
   text-align: left;
@@ -196,7 +196,6 @@ body{
   font-family: 'Knockout-93UltmtHeviwt';
 }
 .poster .tweet .adjective, .poster .tweet .adverb{
-  font-family: 'Knockout-68FullFeatherwt';
   letter-spacing: 75px;
 }
 .poster .tweet .conjunction{
