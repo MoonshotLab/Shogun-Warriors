@@ -16,6 +16,9 @@ $(function(){
     $tweet.addClass('animate');
     shapes.hide();
 
+    $('.screen-name').html('@' + tweet.user.screen_name);
+    $('.hash-tag').html('#' + tweet.hash_tag);
+
     setTimeout(function(){ $tweet.addClass('hide');}, 1);
     setTimeout(backgrounds.toggle,                    600);
     setTimeout(function(){ updateText(tweet); },      1000);

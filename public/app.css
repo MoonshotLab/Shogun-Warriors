@@ -92,6 +92,19 @@ body{
   opacity: 0;
 }
 
+/* attribution */
+.poster .attribution{
+  font-family: 'Knockout-93UltmtHeviwt';
+  color: black;
+  text-align: left;
+  font-size: 15%;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  width: 100%;
+  z-index: 3;
+}
+
 .poster .shape{
   position: absolute;
   background-size: contain;

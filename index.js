@@ -4,6 +4,7 @@ var path = require('path');
 var fs = require('fs');
 var twitter = require('./lib/twitter');
 var validator = require('./lib/validator');
+var config = require('./config')();
 var port = process.env.PORT || 3000;
 var app = express();
 
@@ -64,6 +65,7 @@ io.on('connection', function(socket){
 var timer = null;
 twitter.stream.on('tweet', function(tweet){
   if(!timer){
+    tweet.hash_tag = config.HASH_TAG;
     timer = setTimeout(function(){ timer = null; }, 7000);
     preparse(tweet, function(tweet){
       io.sockets.emit('new-tweet', tweet);

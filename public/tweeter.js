@@ -18,5 +18,9 @@ $(function(){
 
 var submitTweet = function(){
   var tweet = $('#tweet').val();
-  socket.emit('tweet-created', { text : tweet });
+  socket.emit('tweet-created', {
+    text      : tweet,
+    user      : { screen_name : 'joelongstreet' },
+    hash_tag  : 'hashtag'
+  });
 };
