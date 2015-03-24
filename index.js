@@ -40,7 +40,7 @@ io.on('connection', function(socket){
     });
   });
 
-  if(config.PRINT) socket.on('done-drawing', printer.print);
+  // if(config.PRINT) socket.on('done-drawing', printer.print);
 });
 
 
@@ -49,8 +49,10 @@ io.on('connection', function(socket){
 var tweetQueue = [];
 
 var emitTweet = function(){
-  io.sockets.emit('new-tweet', tweetQueue[0]);
-  tweetQueue.shift();
+  if(tweetQueue.length){
+    io.sockets.emit('new-tweet', tweetQueue[0]);
+    tweetQueue.shift();
+  }
 };
 
 setInterval(emitTweet, 10000);
