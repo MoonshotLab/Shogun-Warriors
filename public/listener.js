@@ -23,9 +23,14 @@ $(function(){
     setTimeout(backgrounds.toggle,                    600);
     setTimeout(function(){ updateText(tweet); },      1000);
     setTimeout(shapes.show,                           1800);
+    setTimeout(doneDrawing,                           2500);
   });
 });
 
+
+var doneDrawing = function(){
+  socket.emit('done-drawing');
+};
 
 
 var updateText = function(tweet){

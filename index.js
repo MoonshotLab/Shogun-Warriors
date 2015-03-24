@@ -2,6 +2,7 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var fs = require('fs');
+var printer = require('./lib/printer');
 var twitter = require('./lib/twitter');
 var validator = require('./lib/validator');
 var config = require('./config')();
@@ -60,6 +61,8 @@ io.on('connection', function(socket){
       io.sockets.emit('new-tweet', tweet);
     });
   });
+
+  if(config.PRINT) socket.on('done-drawing', printer.print);
 });
 
 var timer = null;

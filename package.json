@@ -9,6 +9,7 @@
   "author": "Joe Longstreet",
   "license": "MIT",
   "dependencies": {
+    "applescript": "^1.0.0",
     "express": "^4.12.2",
     "jade": "^1.9.2",
     "profanity-util": "0.0.2",
