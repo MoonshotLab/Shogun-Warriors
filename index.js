@@ -44,14 +44,21 @@ io.on('connection', function(socket){
 });
 
 
-// listen to the twitter stream and send new tweets to the clients
-var timer = null;
+// listen to the twitter stream and add tweets to the queu
+// send tweets to the client and remove them once used
+var tweetQueue = [];
+
+var emitTweet = function(){
+  io.sockets.emit('new-tweet', tweetQueue[0]);
+  tweetQueue.shift();
+};
+
+setInterval(emitTweet, 10000);
+
 twitter.stream.on('tweet', function(tweet){
-  if(!timer){
-    tweet.hash_tag = config.HASH_TAG;
-    timer = setTimeout(function(){ timer = null; }, 7000);
-    utils.preparseTweet(tweet, function(tweet){
-      io.sockets.emit('new-tweet', tweet);
-    });
-  }
+  utils.preparseTweet(tweet, function(parsedTweet){
+    parsedTweet.hash_tag = config.HASH_TAG;
+    tweetQueue.push(parsedTweet);
+    if(tweetQueue.length === 0) emitTweet();
+  });
 });
