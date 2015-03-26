@@ -2,6 +2,7 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var utils = require('./lib/utils');
+var db = require('./lib/db');
 var printer = require('./lib/printer');
 var twitter = require('./lib/twitter');
 var config = require('./config')();
@@ -44,14 +45,19 @@ io.on('connection', function(socket){
 });
 
 
-// listen to the twitter stream and add tweets to the queu
+// listen to the twitter stream and add tweets to the queue
 // send tweets to the client and remove them once used
+//
 var tweetQueue = [];
 
 var emitTweet = function(){
   if(tweetQueue.length){
     io.sockets.emit('new-tweet', tweetQueue[0]);
     tweetQueue.shift();
+  } else{
+    db.getRandomTweet().then(function(tweet){
+      io.sockets.emit('new-tweet', tweet);
+    });
   }
 };
 
@@ -60,7 +66,7 @@ setInterval(emitTweet, 10000);
 twitter.stream.on('tweet', function(tweet){
   utils.preparseTweet(tweet, function(parsedTweet){
     parsedTweet.hash_tag = config.HASH_TAG;
+    db.saveTweet(parsedTweet);
     tweetQueue.push(parsedTweet);
-    if(tweetQueue.length === 0) emitTweet();
   });
 });
