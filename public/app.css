@@ -101,7 +101,7 @@ body{
 
 /* attribution */
 .poster .attribution{
-  font-family: 'Knockout-93UltmtHeviwt';
+  font-family: 'Knockout-72FullCruiserwt';
   color: black;
   text-align: left;
   font-size: 15%;
@@ -110,6 +110,13 @@ body{
   left: 15px;
   width: 100%;
   z-index: 3;
+}
+.poster .attribution .screen-name{
+  float: left;
+  margin-right: 15px;
+}
+.poster .attribution .hash-tag{
+  color: white;
 }
 
 .poster .shape{

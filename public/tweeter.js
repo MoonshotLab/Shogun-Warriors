@@ -21,6 +21,6 @@ var submitTweet = function(){
   socket.emit('tweet-created', {
     text      : tweet,
     user      : { screen_name : 'joelongstreet' },
-    hash_tag  : 'hashtag'
+    hash_tag  : 'bfuel'
   });
 };
