@@ -35,23 +35,9 @@ var doneDrawing = function(){
 
 var updateText = function(tweet){
 
-  // ensure every word is surrounded in a span
-  var text   = '';
-  var splits = tweet.pure.split(' ');
-  splits.forEach(function(split){
-    var subStr = '';
-    if(split.indexOf('span') == -1 && split.indexOf('class=') == -1){
-      subStr += '<span class="other">';
-      subStr += split;
-      subStr += '</span> ';
-    } else subStr = (split + ' ');
-
-    text += subStr;
-  });
-
   // unfade the text and use the new tweet
   $tweet.removeClass('hide');
-  $tweet.html(text);
+  $tweet.html(tweet.pure);
 
   // adjust text size, alignment, and breaks dependent on tweet length
   var tweetLength = $tweet.text().length;
