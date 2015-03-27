@@ -60,13 +60,15 @@ setInterval(function(){
 // send tweets to the client and remove them once used
 twitter.stream.on('tweet', function(tweet){
   utils.preparseTweet(tweet, function(parsedTweet){
-    parsedTweet.hash_tag = config.HASH_TAG;
-    tweetQueue.push(parsedTweet);
+    if(parsedTweet.user.screen_name != 'barkleyus'){
+      parsedTweet.hash_tag = config.HASH_TAG;
+      tweetQueue.push(parsedTweet);
 
-    db.saveTweet(parsedTweet)
-      .then(utils.createScreenshot)
-      .then(s3.rememberScreenshot)
-      .then(twitter.respondToUser)
-      .fail(console.log);
+      db.saveTweet(parsedTweet)
+        .then(utils.createScreenshot)
+        .then(s3.rememberScreenshot)
+        .then(twitter.respondToUser)
+        .fail(console.log);
+    }
   });
 });
