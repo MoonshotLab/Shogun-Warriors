@@ -7,7 +7,7 @@ var twitter = require('./lib/twitter');
 var s3 = require('./lib/S3');
 var config = require('./config')();
 var port = config.PORT || 3000;
-var app = express();
+var app = express(); 
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
