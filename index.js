@@ -52,7 +52,7 @@ setInterval(function(){
     sendTweetToClients(tweetQueue[0]);
     tweetQueue.shift();
   } else db.getRandomTweet().then(sendTweetToClients);
-}, 10000);
+}, 20000);
 
 
 
