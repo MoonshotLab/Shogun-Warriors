@@ -1,1 +1,1 @@
-web: node runner.js
+web: node index.js
