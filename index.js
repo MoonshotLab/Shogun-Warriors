@@ -59,16 +59,18 @@ setInterval(function(){
 // listen to the twitter stream and add tweets to the queue
 // send tweets to the client and remove them once used
 twitter.stream.on('tweet', function(tweet){
-  utils.preparseTweet(tweet, function(parsedTweet){
-    if(parsedTweet.user.screen_name != 'barkleyus'){
+  if(tweet.text.indexOf('Thanks for visiting us') == -1){
+    utils.preparseTweet(tweet, function(parsedTweet){
       parsedTweet.hash_tag = config.HASH_TAG;
       tweetQueue.push(parsedTweet);
 
       db.saveTweet(parsedTweet)
         .then(utils.createScreenshot)
         .then(s3.rememberScreenshot)
-        // .then(twitter.respondToUser)
-        .fail(console.log);
-    }
-  });
+        .then(twitter.respondToUser)
+        .fail(function(err){
+          console.log(err);
+        });
+    });
+  }
 });
