@@ -3,6 +3,25 @@ var $poster;
 var animationClass = 'flipInX';
 
 
+var createTweet = function(tweet, preventAnimate){
+  $('.screen-name').html('@' + tweet.user.screen_name);
+  $('.hash-tag').html('#' + tweet.hash_tag);
+
+  if(preventAnimate){
+    $tweet.addClass('hide');
+    updateText(tweet, true);
+    shapes.show(true);
+  } else{
+    $tweet.addClass('animate');
+    shapes.hide();
+    setTimeout(function(){ $tweet.addClass('hide');}, 1);
+    setTimeout(backgrounds.toggle,                    600);
+    setTimeout(function(){ updateText(tweet); },      1000);
+    setTimeout(shapes.show,                           1800);
+  }
+};
+
+
 $(function(){
   // set the font size based on the body size
   var bodyWidth = $('body').width();
@@ -12,32 +31,18 @@ $(function(){
   $tweet = $('.tweet');
   $poster = $('.poster');
 
-  socket.on('new-tweet', function(tweet){
-    $tweet.addClass('animate');
-    shapes.hide();
-
-    $('.screen-name').html('@' + tweet.user.screen_name);
-    $('.hash-tag').html('#' + tweet.hash_tag);
-
-    setTimeout(function(){ $tweet.addClass('hide');}, 1);
-    setTimeout(backgrounds.toggle,                    600);
-    setTimeout(function(){ updateText(tweet); },      1000);
-    setTimeout(shapes.show,                           1800);
-    setTimeout(doneDrawing,                           2500);
-  });
+  if(pageTweet.user) createTweet(pageTweet, true);
+  else socket.on('new-tweet', createTweet);
 });
 
 
-var doneDrawing = function(){
-  socket.emit('done-drawing');
-};
+var updateText = function(tweet, preventAnimate){
 
-
-var updateText = function(tweet){
-
-  // unfade the text and use the new tweet
+  // unfade the text
   $tweet.removeClass('hide');
-  $tweet.html(tweet.pure);
+
+  // dont show the hash tag
+  $tweet.html(tweet.pure.replace('#' + tweet.hash_tag, ''));
 
   // adjust text size, alignment, and breaks dependent on tweet length
   var tweetLength = $tweet.text().length;
@@ -83,20 +88,22 @@ var updateText = function(tweet){
   // loop over each element
   var spans = shuffleArray($tweet.find('span'));
   spans.each(function(i){
-    scheduleReveal($(this), i);
+    scheduleReveal($(this), i, preventAnimate);
   });
 };
 
 
 
 // just wait a little bit before showing the word
-var scheduleReveal = function($el, i){
-  $el.addClass('animated');
-  $el.addClass('hide');
-  setTimeout(function(){
-    $el.removeClass('hide');
-    $el.addClass(animationClass);
-  }, (i+1)*50);
+var scheduleReveal = function($el, i, preventAnimate){
+  if(!preventAnimate){
+    $el.addClass('animated');
+    $el.addClass('hide');
+    setTimeout(function(){
+      $el.removeClass('hide');
+      $el.addClass(animationClass);
+    }, (i+1)*50);
+  }
 };
 
 

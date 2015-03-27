@@ -5,6 +5,7 @@ block head
   script(src='/listener.js')
   script(src='/shapes.js')
   script.
+    var pageTweet = !{JSON.stringify(tweet)};
     shapes.list = !{JSON.stringify(shapes)}
   link(rel='stylesheet' href='/vendor/animate.css')
 

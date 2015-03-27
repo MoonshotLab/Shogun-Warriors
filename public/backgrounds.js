@@ -30,7 +30,7 @@ backgrounds.getOne = function(){
 
   var backgroundString = '';
   if(colors.length > 1){
-    backgroundString = 'linear-gradient(';
+    backgroundString = '-webkit-linear-gradient(';
 
     colors.forEach(function(color, i){
       backgroundString += color;

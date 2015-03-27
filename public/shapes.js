@@ -16,9 +16,11 @@ shapes.hide = function(){
 };
 
 
-shapes.show = function(){
+shapes.show = function(preventAnimate){
   var $shape = $('.shape');
   $shape.css({ 'background-image' : 'url(' + shapes.getOne() + ')' });
-  $shape.removeClass('bounceOut');
-  $shape.addClass('bounceIn');
+  if(!preventAnimate){
+    $shape.removeClass('bounceOut');
+    $shape.addClass('bounceIn');
+  }
 };

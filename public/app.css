@@ -1,23 +1,16 @@
 @font-face {
-  font-family: 'Knockout-27JuniorBantamwt';
-  src: url('/fonts/Knockout-27JuniorBantamwt.otf') format('opentype');
+  font-family: 'Knockout-93UltmtHeviwt';
+  src: url('/fonts/Knockout-93UltmtHeviwt.otf') format('opentype');
 }
 @font-face {
   font-family: 'Knockout-47Bantamweight';
   src: url('/fonts/Knockout-47Bantamweight.otf') format('opentype');
 }
 @font-face {
-  font-family: 'Knockout-68FullFeatherwt';
-  src: url('/fonts/Knockout-68FullFeatherwt.otf') format('opentype');
-}
-@font-face {
   font-family: 'Knockout-72FullCruiserwt';
   src: url('/fonts/Knockout-72FullCruiserwt.otf') format('opentype');
 }
-@font-face {
-  font-family: 'Knockout-93UltmtHeviwt';
-  src: url('/fonts/Knockout-93UltmtHeviwt.otf') format('opentype');
-}
+
 
 
 @media print {
@@ -33,13 +26,11 @@ html, body{
   overflow: hidden;
   padding: 0;
   height: 100%;
+  width: 100%;
 }
 body{
   color: white;
-  background: linear-gradient(#EA1D8E, #F7931D, #E52125);
-  font-family: Helvetica;
-  width: 100%;
-  height: 100%;
+  background: -webkit-linear-gradient(#EA1D8E, #F7931D, #E52125);
 }
 
 
