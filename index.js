@@ -7,7 +7,7 @@ var twitter = require('./lib/twitter');
 var s3 = require('./lib/S3');
 var config = require('./config')();
 var port = config.PORT || 3000;
-var app = express();  
+var app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
@@ -59,6 +59,7 @@ setInterval(function(){
 // listen to the twitter stream and add tweets to the queue
 // send tweets to the client and remove them once used
 twitter.stream.on('tweet', function(tweet){
+  console.log('new tweet', tweet.text);
   if(tweet.text.indexOf('Thanks for visiting us') == -1){
     utils.preparseTweet(tweet, function(parsedTweet){
       parsedTweet.hash_tag = config.HASH_TAG;
