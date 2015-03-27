@@ -66,8 +66,8 @@ twitter.stream.on('tweet', function(tweet){
 
       db.saveTweet(parsedTweet)
         .then(utils.createScreenshot)
-        .then(s3.rememberScreenshot)
-        .then(twitter.respondToUser)
+        // .then(s3.rememberScreenshot)
+        // .then(twitter.respondToUser)
         .fail(console.log);
     }
   });
