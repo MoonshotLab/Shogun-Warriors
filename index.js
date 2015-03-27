@@ -4,6 +4,7 @@ var utils = require('./lib/utils');
 var db = require('./lib/db');
 var routes = require('./lib/routes');
 var twitter = require('./lib/twitter');
+var s3 = require('./lib/S3');
 var config = require('./config')();
 var port = config.PORT || 3000;
 var app = express();
@@ -60,8 +61,12 @@ setInterval(function(){
 twitter.stream.on('tweet', function(tweet){
   utils.preparseTweet(tweet, function(parsedTweet){
     parsedTweet.hash_tag = config.HASH_TAG;
-    db.saveTweet(parsedTweet).then(function(savedTweet){
-      tweetQueue.push(parsedTweet);
-    });
+    tweetQueue.push(parsedTweet);
+
+    db.saveTweet(parsedTweet)
+      .then(utils.createScreenshot)
+      .then(s3.rememberScreenshot)
+      .then(twitter.respondToUser)
+      .fail(console.log);
   });
 });
