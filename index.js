@@ -31,7 +31,7 @@ var io = require('socket.io')(server);
 
 io.on('connection', function(socket){
   socket.on('create-tweet', function(tweet){
-    console.log(tweet.pure);
+    console.log('pure:', tweet.pure);
     utils.preparseTweet(tweet, sendTweetToClients);
   });
 });
