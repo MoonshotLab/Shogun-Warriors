@@ -31,7 +31,6 @@ var io = require('socket.io')(server);
 
 io.on('connection', function(socket){
   socket.on('create-tweet', function(tweet){
-    console.log('pure:', tweet.pure);
     utils.preparseTweet(tweet, sendTweetToClients);
   });
 });
@@ -40,6 +39,7 @@ io.on('connection', function(socket){
 
 // send tweets to the any clients that are listening
 var sendTweetToClients = function(tweet){
+  console.log('pure:', tweet.pure);
   io.sockets.emit('new-tweet', tweet);
 };
 
