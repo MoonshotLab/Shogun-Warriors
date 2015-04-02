@@ -39,7 +39,6 @@ io.on('connection', function(socket){
 
 // send tweets to the any clients that are listening
 var sendTweetToClients = function(tweet){
-  console.log('pure:', tweet.pure);
   io.sockets.emit('new-tweet', tweet);
 };
 
@@ -60,7 +59,7 @@ setInterval(function(){
 // listen to the twitter stream and add tweets to the queue
 // send tweets to the client and remove them once used
 twitter.stream.on('tweet', function(tweet){
-  console.log('new tweet', tweet.text);
+  console.log('new tweet:', tweet.text);
 
   // this is a hack to prevent the auto tweet replies from being picked up
   // and treated like a new tweet. It would create and endless loop
