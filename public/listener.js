@@ -86,7 +86,8 @@ var updateText = function(tweet, preventAnimate){
   }
 
   // loop over each element
-  var spans = shuffleArray($tweet.find('span'));
+  var spans = $tweet.find('span');
+  if(spans.length) spans = shuffleArray(spans);
   spans.each(function(i){
     scheduleReveal($(this), i, preventAnimate);
   });
