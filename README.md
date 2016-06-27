@@ -2,6 +2,8 @@
 
 A tweet fountain which showcases content matching a specific hash tag.
 
+![](http://i.imgur.com/He62sNZ.png)
+
 Content is showcased to match Barkley "Spark" posters.
 
 Upon receiving the tweet, the app will do the following:
@@ -10,6 +12,7 @@ Upon receiving the tweet, the app will do the following:
 * Physically print the poster
 * Store the tweet in a database for later reference
 
+![](http://i.imgur.com/xSH7ZOk.png)
 
 ## Environment Variables
 * TWITTER_CONSUMER_KEY
@@ -24,3 +27,5 @@ Upon receiving the tweet, the app will do the following:
 * URL : the url of this application
 * S3_KEY
 * S3_SECRET
+
+![](http://i.imgur.com/VhOQjyj.png)
